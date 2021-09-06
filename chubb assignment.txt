@@ -1,0 +1,124 @@
+Q1
+CREATE DATABASE chubb;
+USE chubb;
+
+CREATE TABLE mentors(
+	mentor_id VARCHAR(10) PRIMARY KEY,
+	mentor_name VARCHAR(30)
+);
+CREATE TABLE users(
+	user_id VARCHAR(10) PRIMARY KEY,
+	username VARCHAR(30),
+	mentor_id VARCHAR(10),
+    FOREIGN KEY(mentor_id) REFERENCES mentors(mentor_id)
+);
+CREATE TABLE codekata(
+	user_id VARCHAR(10), 
+	problems INT(5),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+CREATE TABLE attendance(
+	user_id VARCHAR(10), 
+	days_present INT(5),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+CREATE TABLE courses(
+	course_id VARCHAR(10) PRIMARY KEY,
+	course_name VARCHAR(30),
+	mentor_id VARCHAR(10),
+    FOREIGN KEY(mentor_id) REFERENCES mentors(mentor_id)
+);
+CREATE TABLE topics(
+	topic_id VARCHAR(10) PRIMARY KEY,
+	topic_name VARCHAR(30),
+	course_id VARCHAR(10),
+    FOREIGN KEY(course_id) REFERENCES courses(course_id)
+);
+CREATE TABLE tasks(
+	topic_id VARCHAR(10),
+	user_id VARCHAR(10),
+    FOREIGN KEY(user_id) REFERENCES users(user_id),
+     FOREIGN KEY(topic_id) REFERENCES topics(topic_id)
+);
+CREATE TABLE company_drives(
+	company_id VARCHAR(10) PRIMARY KEY,
+	company_name VARCHAR(30),
+	user_id VARCHAR(10),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+CREATE TABLE students_activated_courses(
+	user_id VARCHAR(10),
+	course_id VARCHAR(30),
+    FOREIGN KEY(course_id) REFERENCES courses(course_id),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+
+Q2
+INSERT INTO mentors VALUES(1,'divyansh');
+INSERT INTO mentors VALUES(2,'anil');
+INSERT INTO mentors VALUES(3,'vishrut');
+INSERT INTO mentors VALUES(4,'gokul');
+INSERT INTO mentors VALUES(5,'priya');
+
+INSERT INTO users VALUES(1,'sourabh',2);
+INSERT INTO users VALUES(2,'kesha',4);
+INSERT INTO users VALUES(3,'piyush',4);
+INSERT INTO users VALUES(4,'pinki',1);
+INSERT INTO users VALUES(5,'pawan',3);
+INSERT INTO users VALUES(6,'rishabh',5);
+
+INSERT INTO codekata VALUES(1,61);
+INSERT INTO codekata VALUES(2,42);
+INSERT INTO codekata VALUES(3,51);
+INSERT INTO codekata VALUES(4,76);
+INSERT INTO codekata VALUES(5,60);
+
+INSERT INTO courses VALUES(1,'Python',3);
+INSERT INTO courses VALUES(2,'Strings',5);
+INSERT INTO courses VALUES(3,'Java',4);
+INSERT INTO courses VALUES(4,'C',2);
+INSERT INTO courses VALUES(5,'Data structures',1);
+
+INSERT INTO attendance VALUES(1,30);
+INSERT INTO attendance VALUES(2,22);
+INSERT INTO attendance VALUES(3,45);
+INSERT INTO attendance VALUES(4,65);
+INSERT INTO attendance VALUES(5,11);
+
+INSERT INTO topics VALUES(1,'List',1);
+INSERT INTO topics VALUES(2,'Class',3);
+INSERT INTO topics VALUES(3,'OOP',3);
+INSERT INTO topics VALUES(4,'Polymorphism',3);
+INSERT INTO topics VALUES(5,'Graph',5);
+
+INSERT INTO company_drives VALUES(1,'Highradius',2);
+INSERT INTO company_drives VALUES(6,'Adobe',3);
+INSERT INTO company_drives VALUES(3,'Google',3);
+INSERT INTO company_drives VALUES(4,'IBM',1);
+INSERT INTO company_drives VALUES(5,'Chubb',2);
+
+INSERT INTO students_activated_courses VALUES(1,5);
+INSERT INTO students_activated_courses VALUES(2,4);
+INSERT INTO students_activated_courses VALUES(3,3);
+INSERT INTO students_activated_courses VALUES(4,2);
+INSERT INTO students_activated_courses VALUES(5,1);
+
+INSERT INTO tasks VALUES(2,4);
+INSERT INTO tasks VALUES(3,3);
+INSERT INTO tasks VALUES(5,2);
+INSERT INTO tasks VALUES(1,2);
+INSERT INTO tasks VALUES(4,2);
+
+Q3
+SELECT SUM(problems) FROM codekata;
+
+Q4
+SELECT user_id,COUNT(company_id) FROM company_drives GROUP BY user_id;
+
+Q5 
+
+Q6
+SELECT mentor_name FROM mentors;
+
+Q7
+SELECT mentor_id,COUNT(user_id) FROM users GROUP BY mentor_id;
