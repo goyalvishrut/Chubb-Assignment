@@ -1,0 +1,369 @@
+1. Find all the topics and tasks which are taught in the month of October.
+ANSWER 1)
+> db.topics.aggregate([
+...   {$project: {name: 1, month: {$month: '$date'}}},
+...   {$match: {month: 10}}
+... ]).pretty()
+
+{ 
+	"_id" : ObjectId("613a7b8f2738e5415c7fe2f5"), 
+	"month" : 10 
+}
+{ 
+	"_id" : ObjectId("613a7b8f2738e5415c7fe2fd"), 
+	"month" : 10 
+}
+{ 
+	"_id" : ObjectId("613a7b8f2738e5415c7fe301"), 
+	"month" : 10 
+}
+
+2. Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020.
+ANSWER 2)
+> db.company_drives.find({date:{$gte:ISODate("2020-10-15"),$lte:ISODate("2020-10-31")}}).pretty()
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe307"),
+        "id_company" : 4,
+        "name_company" : "peres ratk",
+        "id_user" : 45,
+        "date" : ISODate("2020-10-29T22:19:58Z")
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe308"),
+        "id_company" : 5,
+        "name_company" : "aercue econd",
+        "id_user" : 49,
+        "date" : ISODate("2020-10-22T22:19:58Z")
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe309"),
+        "id_company" : 6,
+        "name_company" : "retcf oliers",
+        "id_user" : 36,
+        "date" : ISODate("2020-10-20T22:19:58Z")
+}
+
+3. Find all the company drives and students who are appeared for the placement.
+ANSWER 3)
+> db.company_drives.aggregate([
+...   {
+...     '$lookup': {
+...       'from': 'users',
+...       'localField': 'id_user',
+...       'foreignField': 'id_user',
+...       'as': 'students'
+...     }
+...   }, {
+...     '$project': {
+...       'name_company': 1,
+...       'students': 1
+...     }
+...   }
+... ]).pretty()
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe304"),
+        "name_company" : "lluet supdiresse",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe292"),
+                        "id_user" : 1,
+                        "user_name" : "gantius",
+                        "mentor_id" : 19,
+                        "course_id" : 3
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe305"),
+        "name_company" : "tricfd udis",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe2b2"),
+                        "id_user" : 33,
+                        "user_name" : "delmia",
+                        "mentor_id" : 16,
+                        "course_id" : 3
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe306"),
+        "name_company" : "erfermt dallivus",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe2c1"),
+                        "id_user" : 48,
+                        "user_name" : "reknana",
+                        "mentor_id" : 13,
+                        "course_id" : 3
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe307"),
+        "name_company" : "peres ratk",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe2be"),
+                        "id_user" : 45,
+                        "user_name" : "uskema",
+                        "mentor_id" : 13,
+                        "course_id" : 2
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe308"),
+        "name_company" : "aercue econd",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe2c2"),
+                        "id_user" : 49,
+                        "user_name" : "jayl",
+                        "mentor_id" : 19,
+                        "course_id" : 3
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe309"),
+        "name_company" : "retcf oliers",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe2b5"),
+                        "id_user" : 36,
+                        "user_name" : "paerl",
+                        "mentor_id" : 10,
+                        "course_id" : 1
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe30a"),
+        "name_company" : "Donec tincidunt.",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe2a1"),
+                        "id_user" : 16,
+                        "user_name" : "jodaer",
+                        "mentor_id" : 9,
+                        "course_id" : 5
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe30b"),
+        "name_company" : "lerct velas",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe293"),
+                        "id_user" : 2,
+                        "user_name" : "kawsrd",
+                        "mentor_id" : 15,
+                        "course_id" : 5
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe30c"),
+        "name_company" : "nec ante",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe29f"),
+                        "id_user" : 14,
+                        "user_name" : "Mary",
+                        "mentor_id" : 4,
+                        "course_id" : 7
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe30d"),
+        "name_company" : "sit amet,",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe29b"),
+                        "id_user" : 10,
+                        "user_name" : "Tad",
+                        "mentor_id" : 18,
+                        "course_id" : 4
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe30e"),
+        "name_company" : "lerct velas",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe2ac"),
+                        "id_user" : 27,
+                        "user_name" : "Philip",
+                        "mentor_id" : 7,
+                        "course_id" : 4
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe30f"),
+        "name_company" : "et arcu",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe29f"),
+                        "id_user" : 14,
+                        "user_name" : "Mary",
+                        "mentor_id" : 4,
+                        "course_id" : 7
+                }
+        ]
+}
+{
+        "_id" : ObjectId("613a7d052738e5415c7fe310"),
+        "name_company" : "sed dui.",
+        "students" : [
+                {
+                        "_id" : ObjectId("613a665b2738e5415c7fe2ad"),
+                        "id_user" : 28,
+                        "user_name" : "Eagan",
+                        "mentor_id" : 11,
+                        "course_id" : 6
+                }
+        ]
+}
+
+
+4. Find the number of problems solved by the user in codekata.
+ANSWER 4)
+> db.codekata.find().pretty()
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1c1"),
+        "id_user" : 1,
+        "problems " : 77
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1c2"),
+        "id_user" : 2,
+        "problems " : 66
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1c3"),
+        "id_user" : 3,
+        "problems " : 60
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1c4"),
+        "id_user" : 4,
+        "problems " : 24
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1c5"),
+        "id_user" : 5,
+        "problems " : 13
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1c6"),
+        "id_user" : 6,
+        "problems " : 34
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1c7"),
+        "id_user" : 7,
+        "problems " : 68
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1c8"),
+        "id_user" : 8,
+        "problems " : 83
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1c9"),
+        "id_user" : 9,
+        "problems " : 50
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1ca"),
+        "id_user" : 10,
+        "problems " : 54
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1cb"),
+        "id_user" : 11,
+        "problems " : 98
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1cc"),
+        "id_user" : 12,
+        "problems " : 13
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1cd"),
+        "id_user" : 13,
+        "problems " : 25
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1ce"),
+        "id_user" : 14,
+        "problems " : 43
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1cf"),
+        "id_user" : 15,
+        "problems " : 63
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1d0"),
+        "id_user" : 16,
+        "problems " : 29
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1d1"),
+        "id_user" : 17,
+        "problems " : 73
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1d2"),
+        "id_user" : 18,
+        "problems " : 86
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1d3"),
+        "id_user" : 19,
+        "problems " : 85
+}
+{
+        "_id" : ObjectId("613a5f012738e5415c7fe1d4"),
+        "id_user" : 20,
+        "problems " : 25
+}
+
+5. Find all the mentors with who has the mentee's count more than 15.
+ANSWER 5)
+> db.mentors.aggregate([
+...   {
+...     '$lookup': {
+...       'from': 'users',
+...       'localField': 'mentor_id',
+...       'foreignField': 'mentor_id',
+...       'as': 'students'
+...     }
+...   }, {
+...     '$project': {
+...       'mentor_id': 1,
+...       'mentor_name': 1,
+...       'menteeCount': {
+...         '$size': '$students'
+...       }
+...     }
+...   }, {
+...     '$match': {
+...       'menteeCount': {
+...         '$gt': 15
+...       }
+...     }
+...   }
+... ]).pretty()
+{
+        "_id" : ObjectId("623a5e0e2738e5415c7fe1ad"),
+        "mentor_id" : 5,
+        "mentor_name" : "paul",
+        "menteeCount" : 23
+}
