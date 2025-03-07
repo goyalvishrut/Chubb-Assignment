@@ -1,8 +1,8 @@
 {
-  "allowed_serial_numbers": {
-    "personal_mac": "M7NLC9XGPM",
-    "hp_college": "PHPRK1ANNB32ML",
-    "hp_home": "PPVCP018JGA0OZ",
-    "android": "Android"
-  }
+  "allowed_serial_numbers": [
+    "M7NLC9XGPM",
+    "PHPRK1ANNB32ML",
+    "PPVCP018JGA0OZ",
+    "Android"
+  ]
 }
