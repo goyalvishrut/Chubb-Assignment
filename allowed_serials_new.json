@@ -1,1 +1,32 @@
-
+[
+  {
+    "serialNumber": "M7NLC9XGPM",
+    "isAllowed": true,
+    "name": "Vishrut Mac"
+  },
+  {
+    "serialNumber": "PHPRK1ANNB32ML",
+    "isAllowed": true,
+    "name": "Vishrut"
+  },
+  {
+    "serialNumber": "PPVCP018JGA0OZ",
+    "isAllowed": true,
+    "name": "Vishrut"
+  },
+  {
+    "serialNumber": "Android",
+    "isAllowed": true,
+    "name": "Android"
+  },
+  {
+    "serialNumber": "PJLNP00WBCN13T",
+    "isAllowed": true,
+    "name": "new office laptop abhay"
+  },
+  {
+    "serialNumber": "PGATU0FWRA3C10",
+    "isAllowed": true,
+    "name": "office cabin computer"
+  }
+]
