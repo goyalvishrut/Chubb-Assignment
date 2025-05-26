@@ -33,5 +33,15 @@
     "serialNumber": "/1196HL2/CNWS20076G00CM/",
     "isAllowed": true,
     "name": "office computer abhay"
+  },
+  {
+    "serialNumber": "PJHKF1AOGCR465",
+    "isAllowed": true,
+    "name": "vedant"
+  },
+  {
+    "serialNumber": "PJHKF1A0GCR465",
+    "isAllowed": true,
+    "name": "vedant dummy"
   }
 ]
