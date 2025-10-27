@@ -1,7 +1,7 @@
 [
   {
     "serialNumber": "M7NLC9XGPM",
-    "isAllowed": true,
+    "isAllowed": false,
     "name": "Vishrut Mac"
   },
   {
@@ -16,17 +16,17 @@
   },
   {
     "serialNumber": "Android",
-    "isAllowed": true,
+    "isAllowed": false,
     "name": "Android"
   },
   {
     "serialNumber": "PJLNP00WBCN13T",
-    "isAllowed": true,
+    "isAllowed": false,
     "name": "new office laptop abhay"
   },
   {
     "serialNumber": "PGATU0FWRA3C10",
-    "isAllowed": true,
+    "isAllowed": false,
     "name": "office cabin computer"
   },
   {
@@ -36,12 +36,12 @@
   },
   {
     "serialNumber": "PJHKF1AOGCR465",
-    "isAllowed": true,
+    "isAllowed": false,
     "name": "vedant"
   },
   {
     "serialNumber": "PJHKF1A0GCR465",
-    "isAllowed": true,
+    "isAllowed": false,
     "name": "vedant dummy"
   }
 ]
