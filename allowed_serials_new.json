@@ -38,5 +38,10 @@
     "serialNumber": ".CCRNF32.CN7620652D00QF.",
     "isAllowed": false,
     "name": "temporary laptop for abhay"
+  },
+  {
+    "serialNumber": "0941-0335-3804-1308-3521-2580-54",
+    "isAllowed": true,
+    "name": "remote desktop nivesh"
   }
 ]
