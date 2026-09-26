@@ -6,12 +6,12 @@
   },
   {
     "serialNumber": "PHPRK1ANNB32ML",
-    "isAllowed": true,
+    "isAllowed": false,
     "name": "Vishrut college"
   },
   {
     "serialNumber": "PPVCP018JGA0OZ",
-    "isAllowed": true,
+    "isAllowed": false,
     "name": "Vishrut"
   },
   {
@@ -20,24 +20,14 @@
     "name": "Android"
   },
   {
-    "serialNumber": "PJLNP00WBCN13T",
-    "isAllowed": false,
-    "name": "new office laptop abhay"
-  },
-  {
     "serialNumber": "PGATU0FWRA3C10",
     "isAllowed": false,
     "name": "office cabin computer"
   },
   {
     "serialNumber": "/1196HL2/CNWS20076G00CM/",
-    "isAllowed": true,
-    "name": "office computer abhay"
-  },
-  {
-    "serialNumber": ".CCRNF32.CN7620652D00QF.",
     "isAllowed": false,
-    "name": "temporary laptop for abhay"
+    "name": "office computer abhay"
   },
   {
     "serialNumber": "0941-0335-3804-1308-3521-2580-54",
